@@ -22,8 +22,9 @@ class CreateTagTables extends Migration
             $table->morphs('taggable');
 
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->index(['taggable_type', 'taggable_id']);
         });
-    }
+    }   
 
     public function down()
     {
